@@ -1,0 +1,18 @@
+USE existing_database_name;
+
+-- Create a table to store student details
+CREATE TABLE StudentDetails (
+    serial_no INT AUTO_INCREMENT PRIMARY KEY,
+    student_id VARCHAR(20) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Create a table to store attendance records
+CREATE TABLE Attendance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id VARCHAR(20) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES StudentDetails(student_id) ON DELETE CASCADE
+);
